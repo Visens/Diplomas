@@ -1,7 +1,9 @@
 package diplomas;
 
+import LibraryOfData.ElementsFormPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.sql.SQLException;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -24,7 +26,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageSuccess();
 	}
 
@@ -36,7 +38,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageError();
 	}
 
@@ -48,7 +50,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageWrongFormat();
 	}
 
@@ -60,7 +62,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageError();
 	}
 
@@ -72,7 +74,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageWrongDate();
 	}
 
@@ -84,7 +86,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("20");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageOverDate();
 	}
 
@@ -96,7 +98,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageError();
 	}
 
@@ -108,7 +110,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Сергей Семёнов");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageError();
 	}
 
@@ -120,7 +122,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageRequiredField();
 	}
 
@@ -132,7 +134,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("");
 		elementsFormPage.setCardOwner("123 15");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageWrongFormat();
 	}
 
@@ -144,7 +146,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageWrongFormat();
 	}
 
@@ -156,7 +158,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
 		elementsFormPage.setCardCVV("");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageRequiredField();
 	}
 
@@ -168,7 +170,7 @@ public class TestsPaymentCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
 		elementsFormPage.setCardCVV("D12");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageWrongFormat();
 	}
 

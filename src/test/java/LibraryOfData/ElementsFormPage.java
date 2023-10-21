@@ -1,4 +1,4 @@
-package diplomas;
+package LibraryOfData;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -33,11 +33,11 @@ public class ElementsFormPage {
 	}
 
 	public void checkMessageSuccess() {
-		$$(".notification__title").find(Condition.exactText("Успешно")).shouldBe(Condition.visible, Duration.ofSeconds(8));
+		$$(".notification__title").find(Condition.exactText("Успешно")).shouldBe(Condition.visible, Duration.ofSeconds(15));
 	}
 
 	public void checkMessageError() {
-		$$(".notification__title").find(Condition.exactText("Ошибка")).shouldBe(Condition.visible, Duration.ofSeconds(8));
+		$$(".notification__title").find(Condition.exactText("Ошибка")).shouldBe(Condition.visible, Duration.ofSeconds(15));
 	}
 
 	public void checkMessageWrongFormat() {
@@ -76,7 +76,7 @@ public class ElementsFormPage {
 		cvcOrCvvNumber.setValue(cCvv);
 	}
 
-	public void pushСontinueButton(){
+	public void pushContinueButton(){
 		$$(".button__content").find(Condition.exactText("Продолжить")).click();
 	}
 

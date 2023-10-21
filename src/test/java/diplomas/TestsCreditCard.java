@@ -1,7 +1,12 @@
 package diplomas;
 
+import LibraryOfData.DataBase;
+import LibraryOfData.ElementsFormPage;
+import LibraryOfData.Status;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.sql.SQLException;
 
 public class TestsCreditCard {
 
@@ -20,7 +25,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageSuccess();
 	}
 
@@ -32,7 +37,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageError();
 	}
 
@@ -44,7 +49,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageWrongFormat();
 	}
 
@@ -56,7 +61,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageError();
 	}
 
@@ -68,7 +73,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageWrongDate();
 	}
 
@@ -80,7 +85,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("20");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageOverDate();
 	}
 
@@ -92,7 +97,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageError();
 	}
 
@@ -104,7 +109,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Сергей Семёнов");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageError();
 	}
 
@@ -116,7 +121,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageRequiredField();
 	}
 
@@ -128,7 +133,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("");
 		elementsFormPage.setCardOwner("123 15");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageWrongFormat();
 	}
 
@@ -140,7 +145,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageWrongFormat();
 	}
 
@@ -152,7 +157,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
 		elementsFormPage.setCardCVV("");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageRequiredField();
 	}
 
@@ -164,7 +169,20 @@ public class TestsCreditCard {
 		elementsFormPage.setCardYear("25");
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
 		elementsFormPage.setCardCVV("D12");
-		elementsFormPage.pushСontinueButton();
+		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageWrongFormat();
+	}
+
+	@Test
+	void shouldPayByApprovedCardStatusInDB()  throws SQLException {
+		elementsFormPage.buyOnCredit();
+		elementsFormPage.setCardNumber("4444444444444441");
+		elementsFormPage.setCardMonth("12");
+		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardOwner("Sergei Semenov");
+		elementsFormPage.setCardCVV("111");
+		elementsFormPage.pushContinueButton();
+		elementsFormPage.checkMessageSuccess();
+		DataBase.checkCreditStatus(Status.APPROVED);
 	}
 }
