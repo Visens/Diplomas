@@ -1,6 +1,5 @@
 package LibraryOfData;
 
-import com.mchange.v2.c3p0.DriverManagerDataSource;
 import lombok.val;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,20 +13,6 @@ public class DataBase {
 	private static String appPORT = System.getProperty("app.port");
 	private static String userDB = System.getProperty("app.userDB");
 	private static String password = System.getProperty("app.password");
-
-/*	public static Status mysqlDataSource() throws SQLException {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		val runner = new QueryRunner();
-		val conn = DriverManager.getConnection(url, userDB, password);
-		val creditDataSQL = "SELECT status FROM credit_request_entity;";
-		val credit = runner.query(conn, creditDataSQL, new BeanHandler<>(Credit.class));
-		return credit.status;
-*//*		dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/app");
-		dataSource.setUsername("app");
-		dataSource.setPassword("9mREsvXDs9Gk89Ef");*//*
-*//*		return dataSource;*//*
-	}*/
 
 	public static void clearAllData() throws SQLException {
 		val runner = new QueryRunner();

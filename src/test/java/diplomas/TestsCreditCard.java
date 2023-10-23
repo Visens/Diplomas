@@ -192,9 +192,6 @@ public class TestsCreditCard {
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageSuccess();
-/*		var expectedStatus = APPROVED;
-		var actualStatus = DataBase.mysqlDataSource();
-		assertEquals(expectedStatus, actualStatus);*/
 		DataBase.checkCreditStatus(Status.APPROVED);
 	}
 

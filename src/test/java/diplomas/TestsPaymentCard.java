@@ -1,6 +1,8 @@
 package diplomas;
 
+import LibraryOfData.DataBase;
 import LibraryOfData.ElementsFormPage;
+import LibraryOfData.Status;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
@@ -174,25 +176,29 @@ public class TestsPaymentCard {
 		elementsFormPage.checkMessageWrongFormat();
 	}
 
-//Пробники
-/*	@Test
-	public void validCardApproved () {
-		open("http://localhost:8080");
-		$("[class='heading heading_size_l heading_theme_alfa-on-white']").shouldHave(Condition.exactText("Путешествие дня"));
+	@Test
+	void shouldPayByApprovedCardInBD() throws SQLException {
+		elementsFormPage.buyForYourMoney();
+		elementsFormPage.setCardNumber("4444444444444441");
+		elementsFormPage.setCardMonth("12");
+		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardOwner("Sergei Semenov");
+		elementsFormPage.setCardCVV("111");
+		elementsFormPage.pushContinueButton();
+		elementsFormPage.checkMessageSuccess();
+		DataBase.checkPaymentStatus(Status.APPROVED);
 	}
 
 	@Test
-	public void validCardApprovedDebet () {
-		open("http://localhost:8080");
-		$("[class='button button_size_m button_theme_alfa-on-white']").click();
-		$("[class=''] input").setValue("4444444444444441");
-		$("[class=''] input").setValue("12");
-		$("[class=''] input").setValue("2025");
-		$("[class='']").setValue("Sergei Semenov");
-		$("[class='']").setValue("Sergei Semenov");
-	}*/
-
-
-
-
+	void shouldNotPayByDeclinedCardInBD() throws SQLException {
+		elementsFormPage.buyForYourMoney();
+		elementsFormPage.setCardNumber("4444444444444442");
+		elementsFormPage.setCardMonth("12");
+		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardOwner("Sergei Semenov");
+		elementsFormPage.setCardCVV("111");
+		elementsFormPage.pushContinueButton();
+		elementsFormPage.checkMessageSuccess();
+		DataBase.checkPaymentStatus(Status.DECLINED);
+	}
 }
