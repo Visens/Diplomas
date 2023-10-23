@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="diplomas.TestsCreditCard" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-10-21T15:32:00" hostname="VISENS" time="35.221">
+<testsuite name="diplomas.TestsCreditCard" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-10-23T16:04:43" hostname="VISENS" time="11.257">
   <properties/>
-  <testcase name="shouldPayByApprovedCardStatusInDB()" classname="diplomas.TestsCreditCard" time="35.221">
-    <failure message="com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure&#10;&#10;The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server." type="com.mysql.cj.jdbc.exceptions.CommunicationsException">com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at app//com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175)
-	at app//com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at app//com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
-	at app//com.mysql.cj.jdbc.ConnectionImpl.&lt;init&gt;(ConnectionImpl.java:446)
-	at app//com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
-	at app//com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
-	at platform/java.sql@11.0.19/java.sql.DriverManager.getConnection(DriverManager.java:677)
-	at platform/java.sql@11.0.19/java.sql.DriverManager.getConnection(DriverManager.java:228)
-	at app//LibraryOfData.DataBase.checkCreditStatus(DataBase.java:35)
-	at app//diplomas.TestsCreditCard.shouldPayByApprovedCardStatusInDB(TestsCreditCard.java:186)
+  <testcase name="shouldPayByApprovedCardStatusInDB()" classname="diplomas.TestsCreditCard" time="11.257">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;APPROVED&gt; but was: &lt;null&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;APPROVED&gt; but was: &lt;null&gt;
+	at app//org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at app//org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at app//diplomas.TestsCreditCard.shouldPayByApprovedCardStatusInDB(TestsCreditCard.java:197)
 	at java.base@11.0.19/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base@11.0.19/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base@11.0.19/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -99,40 +93,15 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65)
 	at app//worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at app//worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base@11.0.19/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base@11.0.19/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base@11.0.19/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base@11.0.19/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
-	at app//com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
-	at app//com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
-	at app//com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
-	at app//com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166)
-	at app//com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
-	at app//com.mysql.cj.NativeSession.connect(NativeSession.java:121)
-	at app//com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945)
-	at app//com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
-	... 91 more
-Caused by: java.net.ConnectException: Connection timed out: connect
-	at java.base/java.net.PlainSocketImpl.connect0(Native Method)
-	at java.base/java.net.PlainSocketImpl.socketConnect(PlainSocketImpl.java:101)
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412)
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255)
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.base/java.net.Socket.connect(Socket.java:609)
-	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
-	... 94 more
 </failure>
   </testcase>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[SLF4J: No SLF4J providers were found.
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
-окт. 21, 2023 7:32:03 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+окт. 23, 2023 8:04:46 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 118, so returning the closest version found: 115
+окт. 23, 2023 8:04:54 PM com.mchange.v2.log.MLog <clinit>
+INFO: MLog clients using java 1.4+ standard logging.
 ]]></system-err>
 </testsuite>
