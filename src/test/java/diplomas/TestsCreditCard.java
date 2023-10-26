@@ -6,10 +6,13 @@ import LibraryOfData.Status;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.util.List;
+import lombok.val;
 
 import java.sql.SQLException;
 
 import static LibraryOfData.Status.APPROVED;
+import static LibraryOfData.Status.DECLINED;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestsCreditCard {
@@ -204,7 +207,7 @@ public class TestsCreditCard {
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
-		elementsFormPage.checkMessageError();
+		elementsFormPage.checkMessageSuccess();
 		DataBase.checkCreditStatus(Status.DECLINED);
 	}
 }

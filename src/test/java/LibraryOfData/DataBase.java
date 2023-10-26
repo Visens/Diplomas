@@ -1,11 +1,18 @@
 package LibraryOfData;
 
+import com.sun.istack.NotNull;
 import lombok.val;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import java.util.List;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
+
 
 public class DataBase {
 	private static String url = System.getProperty("db.url");
@@ -25,7 +32,7 @@ public class DataBase {
 	public static void checkPaymentStatus(Status status) throws SQLException {
 		val runner = new QueryRunner();
 		val conn = DriverManager.getConnection(url, userDB, password);
-		val paymentDataSQL = "SELECT status FROM payment_entity;";
+		val paymentDataSQL = "SELECT status FROM payment_entity";
 		val payment = runner.query(conn, paymentDataSQL, new BeanHandler<>(Payment.class));
 		assertEquals(status, payment.status);
 	}
@@ -33,7 +40,7 @@ public class DataBase {
 	public static void checkCreditStatus(Status status) throws SQLException {
 		val runner = new QueryRunner();
 		val conn = DriverManager.getConnection(url, userDB, password);
-		val creditDataSQL = "SELECT status FROM credit_request_entity;";
+		val creditDataSQL = "SELECT status FROM credit_request_entity";
 		val credit = runner.query(conn, creditDataSQL, new BeanHandler<>(Credit.class));
 		assertEquals(status, credit.status);
 	}

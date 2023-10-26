@@ -3,12 +3,15 @@ package diplomas;
 import LibraryOfData.DataBase;
 import LibraryOfData.ElementsFormPage;
 import LibraryOfData.Status;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+
 
 public class TestsPaymentCard {
 
@@ -19,6 +22,10 @@ public class TestsPaymentCard {
 		elementsFormPage = new ElementsFormPage();
 	}
 
+	@AfterEach
+	void clearAll() throws SQLException{
+		DataBase.clearAllData();
+	}
 
 	@Test
 	void shouldPayByApprovedCard() {
