@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="diplomas.TestsPaymentCard" tests="15" skipped="0" failures="3" errors="0" timestamp="2023-10-30T16:34:06" hostname="VISENS" time="87.501">
+<testsuite name="diplomas.TestsCreditCard" tests="15" skipped="0" failures="3" errors="0" timestamp="2023-10-30T16:32:36" hostname="VISENS" time="89.572">
   <properties/>
-  <testcase name="shouldNotPayByDeclinedCardInBD()" classname="diplomas.TestsPaymentCard" time="7.578"/>
-  <testcase name="shouldNotPayByApprovedCardWrongDateMonth()" classname="diplomas.TestsPaymentCard" time="0.815"/>
-  <testcase name="shouldNotPayByWrongCard()" classname="diplomas.TestsPaymentCard" time="0.812"/>
-  <testcase name="shouldNotPayByApprovedCardWrongNameRu()" classname="diplomas.TestsPaymentCard" time="16.201">
-    <failure message="Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}&#13;&#10;Expected: visible&#13;&#10;Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683671266.3.png&#13;&#10;Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683671266.3.html&#13;&#10;Timeout: 15 s.&#13;&#10;Caused by: NoSuchElementException: Cannot locate an element .notification__title.findBy(exact text &quot;Ошибка&quot;)" type="com.codeborne.selenide.ex.ElementNotFound">Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}
+  <testcase name="shouldNotPayByDeclinedCardInDB()" classname="diplomas.TestsCreditCard" time="13.817"/>
+  <testcase name="shouldPayByApprovedCardStatusInDB()" classname="diplomas.TestsCreditCard" time="3.133"/>
+  <testcase name="shouldNotPayByApprovedCardWrongDateMonth()" classname="diplomas.TestsCreditCard" time="1.329"/>
+  <testcase name="shouldNotPayByWrongCard()" classname="diplomas.TestsCreditCard" time="1.498"/>
+  <testcase name="shouldNotPayByApprovedCardWrongNameRu()" classname="diplomas.TestsCreditCard" time="16.58">
+    <failure message="Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}&#13;&#10;Expected: visible&#13;&#10;Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683592661.0.png&#13;&#10;Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683592661.0.html&#13;&#10;Timeout: 15 s.&#13;&#10;Caused by: NoSuchElementException: Cannot locate an element .notification__title.findBy(exact text &quot;Ошибка&quot;)" type="com.codeborne.selenide.ex.ElementNotFound">Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}
 Expected: visible
-Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683671266.3.png
-Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683671266.3.html
+Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683592661.0.png
+Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683592661.0.html
 Timeout: 15 s.
 Caused by: NoSuchElementException: Cannot locate an element .notification__title.findBy(exact text &quot;Ошибка&quot;)
 	at app//com.codeborne.selenide.impl.WebElementSource.createElementNotFoundError(WebElementSource.java:91)
@@ -22,7 +23,7 @@ Caused by: NoSuchElementException: Cannot locate an element .notification__title
 	at app//com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:84)
 	at app//com.sun.proxy.$Proxy14.shouldBe(Unknown Source)
 	at app//LibraryOfData.ElementsFormPage.checkMessageError(ElementsFormPage.java:40)
-	at app//diplomas.TestsPaymentCard.shouldNotPayByApprovedCardWrongNameRu(TestsPaymentCard.java:123)
+	at app//diplomas.TestsCreditCard.shouldNotPayByApprovedCardWrongNameRu(TestsCreditCard.java:125)
 	at java.base@11.0.18/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base@11.0.18/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base@11.0.18/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -117,17 +118,17 @@ Driver info: driver.version: unknown
 	... 93 more
 </failure>
   </testcase>
-  <testcase name="shouldNotPayByUnknownCard()" classname="diplomas.TestsPaymentCard" time="8.108"/>
-  <testcase name="shouldNotPayByApprovedCardWrongNameEmpty()" classname="diplomas.TestsPaymentCard" time="0.763"/>
-  <testcase name="shouldNotPayByApprovedCardWrongDateEmptyYear()" classname="diplomas.TestsPaymentCard" time="0.774"/>
-  <testcase name="shouldPayByApprovedCard()" classname="diplomas.TestsPaymentCard" time="8.391"/>
-  <testcase name="shouldNotPayByApprovedCardWrongDateEmptyMonth()" classname="diplomas.TestsPaymentCard" time="0.775"/>
-  <testcase name="shouldNotPayByApprovedCardWrongCVV()" classname="diplomas.TestsPaymentCard" time="0.822"/>
-  <testcase name="shouldNotPayByDeclinedCard()" classname="diplomas.TestsPaymentCard" time="16.138">
-    <failure message="Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}&#13;&#10;Expected: visible&#13;&#10;Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683707058.4.png&#13;&#10;Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683707058.4.html&#13;&#10;Timeout: 15 s.&#13;&#10;Caused by: NoSuchElementException: Cannot locate an element .notification__title.findBy(exact text &quot;Ошибка&quot;)" type="com.codeborne.selenide.ex.ElementNotFound">Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}
+  <testcase name="shouldNotPayByUnknownCard()" classname="diplomas.TestsCreditCard" time="8.892"/>
+  <testcase name="shouldNotPayByApprovedCardWrongNameEmpty()" classname="diplomas.TestsCreditCard" time="0.799"/>
+  <testcase name="shouldNotPayByApprovedCardWrongDateEmptyYear()" classname="diplomas.TestsCreditCard" time="0.759"/>
+  <testcase name="shouldPayByApprovedCard()" classname="diplomas.TestsCreditCard" time="7.241"/>
+  <testcase name="shouldNotPayByApprovedCardWrongDateEmptyMonth()" classname="diplomas.TestsCreditCard" time="0.76"/>
+  <testcase name="shouldNotPayByApprovedCardWrongCVV()" classname="diplomas.TestsCreditCard" time="0.857"/>
+  <testcase name="shouldNotPayByDeclinedCard()" classname="diplomas.TestsCreditCard" time="16.132">
+    <failure message="Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}&#13;&#10;Expected: visible&#13;&#10;Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683628096.1.png&#13;&#10;Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683628096.1.html&#13;&#10;Timeout: 15 s.&#13;&#10;Caused by: NoSuchElementException: Cannot locate an element .notification__title.findBy(exact text &quot;Ошибка&quot;)" type="com.codeborne.selenide.ex.ElementNotFound">Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}
 Expected: visible
-Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683707058.4.png
-Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683707058.4.html
+Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683628096.1.png
+Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683628096.1.html
 Timeout: 15 s.
 Caused by: NoSuchElementException: Cannot locate an element .notification__title.findBy(exact text &quot;Ошибка&quot;)
 	at app//com.codeborne.selenide.impl.WebElementSource.createElementNotFoundError(WebElementSource.java:91)
@@ -141,7 +142,7 @@ Caused by: NoSuchElementException: Cannot locate an element .notification__title
 	at app//com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:84)
 	at app//com.sun.proxy.$Proxy14.shouldBe(Unknown Source)
 	at app//LibraryOfData.ElementsFormPage.checkMessageError(ElementsFormPage.java:40)
-	at app//diplomas.TestsPaymentCard.shouldNotPayByDeclinedCard(TestsPaymentCard.java:51)
+	at app//diplomas.TestsCreditCard.shouldNotPayByDeclinedCard(TestsCreditCard.java:53)
 	at java.base@11.0.18/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base@11.0.18/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base@11.0.18/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -236,14 +237,13 @@ Driver info: driver.version: unknown
 	... 93 more
 </failure>
   </testcase>
-  <testcase name="shouldNotPayByApprovedCardWrongDateYear()" classname="diplomas.TestsPaymentCard" time="0.807"/>
-  <testcase name="shouldNotPayByApprovedCardWrongCVVEmpty()" classname="diplomas.TestsPaymentCard" time="0.808"/>
-  <testcase name="shouldPayByApprovedCardInBD()" classname="diplomas.TestsPaymentCard" time="8.601"/>
-  <testcase name="shouldNotPayByApprovedCardWrongName()" classname="diplomas.TestsPaymentCard" time="16.104">
-    <failure message="Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}&#13;&#10;Expected: visible&#13;&#10;Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683733365.5.png&#13;&#10;Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683733365.5.html&#13;&#10;Timeout: 15 s.&#13;&#10;Caused by: NoSuchElementException: Cannot locate an element .notification__title.findBy(exact text &quot;Ошибка&quot;)" type="com.codeborne.selenide.ex.ElementNotFound">Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}
+  <testcase name="shouldNotPayByApprovedCardWrongDateYear()" classname="diplomas.TestsCreditCard" time="0.85"/>
+  <testcase name="shouldNotPayByApprovedCardWrongCVVEmpty()" classname="diplomas.TestsCreditCard" time="0.814"/>
+  <testcase name="shouldNotPayByApprovedCardWrongName()" classname="diplomas.TestsCreditCard" time="16.104">
+    <failure message="Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}&#13;&#10;Expected: visible&#13;&#10;Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683645887.2.png&#13;&#10;Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683645887.2.html&#13;&#10;Timeout: 15 s.&#13;&#10;Caused by: NoSuchElementException: Cannot locate an element .notification__title.findBy(exact text &quot;Ошибка&quot;)" type="com.codeborne.selenide.ex.ElementNotFound">Element not found {.notification__title.findBy(exact text &quot;Ошибка&quot;)}
 Expected: visible
-Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683733365.5.png
-Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683733365.5.html
+Screenshot: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683645887.2.png
+Page source: file:/C:/Users/tandr/Desktop/Diploma_T/Diplomas/build/reports/tests/1698683645887.2.html
 Timeout: 15 s.
 Caused by: NoSuchElementException: Cannot locate an element .notification__title.findBy(exact text &quot;Ошибка&quot;)
 	at app//com.codeborne.selenide.impl.WebElementSource.createElementNotFoundError(WebElementSource.java:91)
@@ -257,7 +257,7 @@ Caused by: NoSuchElementException: Cannot locate an element .notification__title
 	at app//com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:84)
 	at app//com.sun.proxy.$Proxy14.shouldBe(Unknown Source)
 	at app//LibraryOfData.ElementsFormPage.checkMessageError(ElementsFormPage.java:40)
-	at app//diplomas.TestsPaymentCard.shouldNotPayByApprovedCardWrongName(TestsPaymentCard.java:111)
+	at app//diplomas.TestsCreditCard.shouldNotPayByApprovedCardWrongName(TestsCreditCard.java:113)
 	at java.base@11.0.18/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base@11.0.18/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base@11.0.18/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -353,5 +353,10 @@ Driver info: driver.version: unknown
 </failure>
   </testcase>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[SLF4J: No SLF4J providers were found.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
+окт. 30, 2023 8:32:38 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 118, so returning the closest version found: 115
+]]></system-err>
 </testsuite>
