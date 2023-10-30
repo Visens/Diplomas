@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="diplomas.TestsPaymentCard" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-10-26T16:56:35" hostname="VISENS" time="9.079">
+<testsuite name="diplomas.TestsPaymentCard" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-10-30T16:21:01" hostname="VISENS" time="7.298">
   <properties/>
-  <testcase name="shouldPayByApprovedCardInBD()" classname="diplomas.TestsPaymentCard" time="9.079">
+  <testcase name="shouldPayByApprovedCardInBD()" classname="diplomas.TestsPaymentCard" time="7.298">
     <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
-	at LibraryOfData.DataBase.checkPaymentStatus(DataBase.java:37)
+	at LibraryOfData.DataBase.checkPaymentStatus(DataBase.java:29)
 	at diplomas.TestsPaymentCard.shouldPayByApprovedCardInBD(TestsPaymentCard.java:196)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -95,7 +95,7 @@
   <system-err><![CDATA[SLF4J: No SLF4J providers were found.
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
-окт. 26, 2023 8:56:36 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+окт. 30, 2023 8:21:03 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 118, so returning the closest version found: 115
 ]]></system-err>
 </testsuite>

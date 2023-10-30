@@ -12,5 +12,7 @@ git clone git@github.com:Visens/Diplomas.git
 
 Для запуска тестов выполнить команду ./gradlew test
 
-## 5. 
+## 5. Для запуска приложения с базой данный PostgresSQL:
+Выполнить команду java "-Dspring.datasource.url=postgresql:mysql://localhost:5432/app" -jar .\artifacts\aqa-shop.jar
 
+Для запуска тестов выполнить команду ./gradlew test

@@ -14,8 +14,6 @@ services:
       - MYSQL_DATABASE=app
       - MYSQL_USER=app
       - MYSQL_PASSWORD=9mREsvXDs9Gk89Ef
-    volumes:
-      - ./data:/var/lib/mysql
   postgres:
     image: postgres:latest
     ports:
@@ -24,5 +22,3 @@ services:
       - POSTGRES_DB=app
       - POSTGRES_USER=app
       - POSTGRES_PASSWORD=9mREsvXDs9Gk89Ef
-    volumes:
-      - ./data:/var/lib/postgresql

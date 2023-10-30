@@ -1,23 +1,15 @@
 package LibraryOfData;
 
-import com.sun.istack.NotNull;
 import lombok.val;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
-import java.util.List;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 
 
 public class DataBase {
 	private static String url = System.getProperty("db.url");
-	private static String appURL = System.getProperty("app.url");
-	private static String appPORT = System.getProperty("app.port");
 	private static String userDB = System.getProperty("app.userDB");
 	private static String password = System.getProperty("app.password");
 
