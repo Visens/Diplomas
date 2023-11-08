@@ -8,6 +8,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 
 
+
 public class DataBase {
 	private static String url = System.getProperty("db.url");
 	private static String userDB = System.getProperty("app.userDB");

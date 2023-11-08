@@ -3,14 +3,13 @@ package diplomas;
 import LibraryOfData.DataBase;
 import LibraryOfData.ElementsFormPage;
 import LibraryOfData.Status;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
-import java.time.Duration;
-
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import io.qameta.allure.selenide.AllureSelenide;
 
 
 public class TestsPaymentCard {
@@ -25,6 +24,11 @@ public class TestsPaymentCard {
 	@AfterEach
 	void clearAll() throws SQLException{
 		DataBase.clearAllData();
+	}
+
+	@BeforeAll
+	static void setUpAll() {
+		SelenideLogger.addListener("allure", new AllureSelenide());
 	}
 
 	@Test
