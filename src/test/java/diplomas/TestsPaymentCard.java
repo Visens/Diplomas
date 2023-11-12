@@ -2,6 +2,7 @@ package diplomas;
 
 import LibraryOfData.DataBase;
 import LibraryOfData.ElementsFormPage;
+import LibraryOfData.GenerateData;
 import LibraryOfData.Status;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import org.junit.jupiter.api.AfterEach;
@@ -15,6 +16,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 public class TestsPaymentCard {
 
 	private ElementsFormPage elementsFormPage;
+	private GenerateData generateData;
 
 	@BeforeEach
 	void setElementsFormPage() {
@@ -188,7 +190,7 @@ public class TestsPaymentCard {
 	}
 
 	@Test
-	void shouldPayByApprovedCardInBD() throws SQLException {
+	void shouldPayByApprovedCardInBD() {
 		elementsFormPage.buyForYourMoney();
 		elementsFormPage.setCardNumber("4444444444444441");
 		elementsFormPage.setCardMonth("12");
@@ -201,7 +203,7 @@ public class TestsPaymentCard {
 	}
 
 	@Test
-	void shouldNotPayByDeclinedCardInBD() throws SQLException {
+	void shouldNotPayByDeclinedCardInBD() {
 		elementsFormPage.buyForYourMoney();
 		elementsFormPage.setCardNumber("4444444444444442");
 		elementsFormPage.setCardMonth("12");

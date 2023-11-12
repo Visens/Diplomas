@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class ElementsFormPage {
+	private static String page = System.getProperty("app.page");
 
 	List<SelenideElement> input = $$(".input__control");
 	SelenideElement cardNumber = input.get(0);
@@ -20,14 +21,17 @@ public class ElementsFormPage {
 	SelenideElement cardOwner = input.get(3);
 	SelenideElement cvcOrCvvNumber = input.get(4);
 
+
 	public void buyForYourMoney() {
-		open("http://localhost:8080");
+		open(page);
 		$$(".button__content").find(Condition.exactText("Купить")).click();
 		$$(".heading_theme_alfa-on-white").find(Condition.exactText("Оплата по карте")).shouldBe(visible);
 	}
 
+
+
 	public void buyOnCredit(){
-		open("http://localhost:8080");
+		open(page);
 		$$(".button__content").find(Condition.exactText("Купить в кредит")).click();
 		$$(".heading_theme_alfa-on-white").find(Condition.exactText("Кредит по данным карты")).shouldBe(visible);
 	}

@@ -44,6 +44,7 @@ test {
     useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
     systemProperty 'file.encoding', 'UTF-8'
+    systemProperty 'app.page', getProperty('app.page', 'http://localhost:8080/')
     systemProperty 'db.url', getProperty('db.url','jdbc:mysql://localhost:3306/app')
     systemProperty 'app.url', getProperty('app.url','http://localhost')
     systemProperty 'app.port', getProperty('app.port','8080')

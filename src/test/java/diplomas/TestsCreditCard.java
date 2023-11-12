@@ -2,19 +2,17 @@ package diplomas;
 
 import LibraryOfData.DataBase;
 import LibraryOfData.ElementsFormPage;
+import LibraryOfData.GenerateData;
 import LibraryOfData.Status;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import org.junit.jupiter.api.*;
 import io.qameta.allure.selenide.AllureSelenide;
-import java.util.List;
-import lombok.val;
-
-import java.sql.SQLException;
 
 
 public class TestsCreditCard {
 
 	private ElementsFormPage elementsFormPage;
+	private GenerateData validMonth;
 
 	@BeforeEach
 	void setElementsFormPage() {
@@ -22,7 +20,7 @@ public class TestsCreditCard {
 	}
 
 	@AfterEach
-	void clearAll() throws SQLException{
+	void clearAll() {
 		DataBase.clearAllData();
 	}
 
@@ -35,6 +33,7 @@ public class TestsCreditCard {
 	static void tearDownAll() {
 		SelenideLogger.removeListener("allure");
 	}
+
 
 	@Test
 	void shouldPayByApprovedCard() {
@@ -193,7 +192,7 @@ public class TestsCreditCard {
 	}
 
 	@Test
-	void shouldPayByApprovedCardStatusInDB() throws SQLException {
+	void shouldPayByApprovedCardStatusInDB() {
 		elementsFormPage.buyOnCredit();
 		elementsFormPage.setCardNumber("4444444444444441");
 		elementsFormPage.setCardMonth("12");
@@ -206,7 +205,7 @@ public class TestsCreditCard {
 	}
 
 	@Test
-	void shouldNotPayByDeclinedCardInDB() throws SQLException {
+	void shouldNotPayByDeclinedCardInDB() {
 		elementsFormPage.buyOnCredit();
 		elementsFormPage.setCardNumber("4444444444444442");
 		elementsFormPage.setCardMonth("12");
