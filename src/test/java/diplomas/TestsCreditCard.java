@@ -11,7 +11,6 @@ import io.qameta.allure.selenide.AllureSelenide;
 public class TestsCreditCard {
 
 	private ElementsFormPage elementsFormPage;
-	private GenerateData validMonth;
 
 	@BeforeEach
 	void setElementsFormPage() {

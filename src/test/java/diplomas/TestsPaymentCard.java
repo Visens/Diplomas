@@ -4,11 +4,9 @@ import LibraryOfData.DataBase;
 import LibraryOfData.ElementsFormPage;
 import LibraryOfData.Status;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.sql.SQLException;
 import io.qameta.allure.selenide.AllureSelenide;
 
 
@@ -19,11 +17,6 @@ public class TestsPaymentCard {
 	@BeforeEach
 	void setElementsFormPage() {
 		elementsFormPage = new ElementsFormPage();
-	}
-
-	@AfterEach
-	void clearAll() throws SQLException{
-		DataBase.clearAllData();
 	}
 
 	@BeforeAll
