@@ -2,7 +2,6 @@ package diplomas;
 
 import LibraryOfData.DataBase;
 import LibraryOfData.ElementsFormPage;
-import LibraryOfData.GenerateData;
 import LibraryOfData.Status;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import org.junit.jupiter.api.AfterEach;
@@ -16,7 +15,6 @@ import io.qameta.allure.selenide.AllureSelenide;
 public class TestsPaymentCard {
 
 	private ElementsFormPage elementsFormPage;
-	private GenerateData generateData;
 
 	@BeforeEach
 	void setElementsFormPage() {

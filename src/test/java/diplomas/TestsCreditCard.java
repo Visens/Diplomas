@@ -2,7 +2,6 @@ package diplomas;
 
 import LibraryOfData.DataBase;
 import LibraryOfData.ElementsFormPage;
-import LibraryOfData.GenerateData;
 import LibraryOfData.Status;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import org.junit.jupiter.api.*;
