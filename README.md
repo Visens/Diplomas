@@ -16,3 +16,6 @@ git clone git@github.com:Visens/Diplomas.git
 Выполнить команду java "-Dspring.datasource.url=postgresql://localhost:5432/app" -jar .\artifacts\aqa-shop.jar
 
 Для запуска тестов выполнить команду ./gradlew test "-Ddb.url=jdbc:postgresql://localhost:5432/app"
+
+## 6. Формирование отчётных документов:
+Для формирования и запуска отчётных документов после прохода тестов выполнить команду ".gradlew allureServe"
