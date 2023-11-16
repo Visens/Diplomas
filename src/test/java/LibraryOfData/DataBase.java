@@ -2,7 +2,7 @@ package LibraryOfData;
 
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.DriverManager;
 
@@ -27,8 +27,8 @@ public class DataBase {
 		var runner = new QueryRunner();
 		var conn = DriverManager.getConnection(url, userDB, password);
 		var paymentDataSQL = "SELECT status FROM payment_entity";
-		var payment = runner.query(conn, paymentDataSQL, new BeanHandler<>(Payment.class));
-		assertEquals(status, payment.status);
+		var payment = runner.query(conn, paymentDataSQL, new ScalarHandler<String>());
+		assertEquals(status.toString(), payment);
 	}
 
 	@SneakyThrows
@@ -36,7 +36,7 @@ public class DataBase {
 		var runner = new QueryRunner();
 		var conn = DriverManager.getConnection(url, userDB, password);
 		var creditDataSQL = "SELECT status FROM credit_request_entity";
-		var credit = runner.query(conn, creditDataSQL, new BeanHandler<>(Credit.class));
-		assertEquals(status, credit.status);
+		var credit = runner.query(conn, creditDataSQL, new ScalarHandler<String>());
+		assertEquals(status.toString(), credit);
 	}
 }

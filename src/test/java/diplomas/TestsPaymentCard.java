@@ -3,6 +3,7 @@ package diplomas;
 import LibraryOfData.DataBase;
 import LibraryOfData.ElementsFormPage;
 import LibraryOfData.Status;
+import LibraryOfData.GenData;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,8 +12,11 @@ import io.qameta.allure.selenide.AllureSelenide;
 
 
 public class TestsPaymentCard {
-
 	private ElementsFormPage elementsFormPage;
+	public DataBase dataBase;
+	String approved = "4444444444444441";
+	String declined = "4444444444444442";
+	String unknown = "4444444444444443";
 
 	@BeforeEach
 	void setElementsFormPage() {
@@ -26,34 +30,42 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldPayByApprovedCard() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageSuccess();
+		dataBase.checkPaymentStatus(Status.APPROVED);
 	}
 
 	@Test
 	void shouldNotPayByDeclinedCard() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444442");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardNumber(declined);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageError();
+		dataBase.checkPaymentStatus(Status.DECLINED);
 	}
 
 	@Test
 	void shouldNotPayByWrongCard() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
 		elementsFormPage.setCardNumber("44DR 4F44 444L PQ43");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
@@ -62,22 +74,26 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldNotPayByUnknownCard() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444443");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardNumber(unknown);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageError();
+		dataBase.checkPaymentStatus(Status.DECLINED);
 	}
 
 	@Test
 	void shouldNotPayByApprovedCardWrongDateMonth() {
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
+		elementsFormPage.setCardNumber(approved);
 		elementsFormPage.setCardMonth("13");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
@@ -86,10 +102,12 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldNotPayByApprovedCardWrongDateYear() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(-2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("20");
+		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
@@ -98,10 +116,12 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldNotPayByApprovedCardWrongName() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
@@ -110,10 +130,12 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldNotPayByApprovedCardWrongNameRu() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Сергей Семёнов");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
@@ -122,10 +144,12 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldNotPayByApprovedCardWrongNameEmpty() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
@@ -134,9 +158,10 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldNotPayByApprovedCardWrongDateEmptyYear() {
+		String month = GenData.generateMonth(+3);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
-		elementsFormPage.setCardMonth("12");
+		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear("");
 		elementsFormPage.setCardOwner("123 15");
 		elementsFormPage.setCardCVV("111");
@@ -146,10 +171,11 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldNotPayByApprovedCardWrongDateEmptyMonth() {
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
+		elementsFormPage.setCardNumber(approved);
 		elementsFormPage.setCardMonth("");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
@@ -158,10 +184,12 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldNotPayByApprovedCardWrongCVVEmpty() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
 		elementsFormPage.setCardCVV("");
 		elementsFormPage.pushContinueButton();
@@ -170,10 +198,12 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldNotPayByApprovedCardWrongCVV() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
 		elementsFormPage.setCardCVV("D12");
 		elementsFormPage.pushContinueButton();
@@ -182,27 +212,31 @@ public class TestsPaymentCard {
 
 	@Test
 	void shouldPayByApprovedCardInBD() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444441");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageSuccess();
-		DataBase.checkPaymentStatus(Status.APPROVED);
+		dataBase.checkPaymentStatus(Status.APPROVED);
 	}
 
 	@Test
 	void shouldNotPayByDeclinedCardInBD() {
+		String month = GenData.generateMonth(+3);
+		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber("4444444444444442");
-		elementsFormPage.setCardMonth("12");
-		elementsFormPage.setCardYear("25");
+		elementsFormPage.setCardNumber(declined);
+		elementsFormPage.setCardMonth(month);
+		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
 		elementsFormPage.setCardCVV("111");
 		elementsFormPage.pushContinueButton();
 		elementsFormPage.checkMessageSuccess();
-		DataBase.checkPaymentStatus(Status.DECLINED);
+		dataBase.checkPaymentStatus(Status.DECLINED);
 	}
 }
