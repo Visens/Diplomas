@@ -5,6 +5,7 @@ import LibraryOfData.ElementsFormPage;
 import LibraryOfData.Status;
 import LibraryOfData.GenData;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,13 +15,15 @@ import io.qameta.allure.selenide.AllureSelenide;
 public class TestsPaymentCard {
 	private ElementsFormPage elementsFormPage;
 	public DataBase dataBase;
-	String approved = "4444444444444441";
-	String declined = "4444444444444442";
-	String unknown = "4444444444444443";
 
 	@BeforeEach
 	void setElementsFormPage() {
 		elementsFormPage = new ElementsFormPage();
+	}
+
+	@AfterEach
+	void clearAll() {
+		DataBase.clearAllData();
 	}
 
 	@BeforeAll
@@ -33,7 +36,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
@@ -48,7 +51,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(declined);
+		elementsFormPage.setCardNumber(GenData.declinedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
@@ -77,7 +80,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(unknown);
+		elementsFormPage.setCardNumber(GenData.unknownCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
@@ -91,7 +94,7 @@ public class TestsPaymentCard {
 	void shouldNotPayByApprovedCardWrongDateMonth() {
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth("13");
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
@@ -105,7 +108,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(-2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
@@ -119,7 +122,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
@@ -133,7 +136,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Сергей Семёнов");
@@ -147,7 +150,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("");
@@ -160,7 +163,7 @@ public class TestsPaymentCard {
 	void shouldNotPayByApprovedCardWrongDateEmptyYear() {
 		String month = GenData.generateMonth(+3);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear("");
 		elementsFormPage.setCardOwner("123 15");
@@ -173,7 +176,7 @@ public class TestsPaymentCard {
 	void shouldNotPayByApprovedCardWrongDateEmptyMonth() {
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth("");
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
@@ -187,7 +190,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
@@ -201,7 +204,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei123 Semen%&#");
@@ -215,7 +218,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(approved);
+		elementsFormPage.setCardNumber(GenData.approvedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
@@ -230,7 +233,7 @@ public class TestsPaymentCard {
 		String month = GenData.generateMonth(+3);
 		String year = GenData.generateYear(+2);
 		elementsFormPage.buyForYourMoney();
-		elementsFormPage.setCardNumber(declined);
+		elementsFormPage.setCardNumber(GenData.declinedCard());
 		elementsFormPage.setCardMonth(month);
 		elementsFormPage.setCardYear(year);
 		elementsFormPage.setCardOwner("Sergei Semenov");
